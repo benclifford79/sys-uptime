@@ -1,5 +1,5 @@
 require 'ffi'
-
+require 'rbconfig'
 # The Sys module serves as a namespace only.
 module Sys
 
@@ -128,7 +128,7 @@ module Sys
     #    Sys::Uptime.seconds => 118800
     #
     def self.seconds
-      if Config::CONFIG['host_os'] =~ /linux/i
+      if RbConfig::CONFIG['host_os'] =~ /linux/i
         begin
           IO.read('/proc/uptime').split.first.to_i
         rescue Exception => err
